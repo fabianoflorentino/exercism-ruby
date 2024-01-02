@@ -9,7 +9,7 @@ class Tournament
   end
 
   def self.tally(input)
-    return "Team                           | MP |  W |  D |  L |  P\n" if input.nil? || input.strip.empty?
+    return header_line if input.nil? || input.strip.empty?
 
     tournament = Tournament.new
     input.each_line { |line| tournament.parsed_result(line.chomp) }
@@ -45,13 +45,13 @@ class Tournament
   end
 
   def generate_table
-    header = header_line
+    header = self.class.header_line
     rows = generate_rows
 
     "#{header}#{rows.join("\n")}\n"
   end
 
-  def header_line
+  def self.header_line
     "Team                           | MP |  W |  D |  L |  P\n"
   end
 
