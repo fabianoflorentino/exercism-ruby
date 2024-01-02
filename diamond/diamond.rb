@@ -34,12 +34,7 @@ class Diamond
 
   # Calculates the maximum spaces needed for each line based on the given letter and current character.
   def max_spaces(letter, char)
-    calc_letter(letter) - calc_char(char)
-  end
-
-  # Calculates the distance of a given letter from 'A'.
-  def calc_letter(letter)
-    (letter.ord - 'A'.ord)
+    calc_char(letter) - calc_char(char)
   end
 
   # Calculates the distance of a given character from 'A'.
