@@ -3,6 +3,7 @@
 require 'minitest/autorun'
 require_relative 'attendee'
 
+# Test
 class AttendeeTest < Minitest::Test
   def test_new_instance_doesnt_have_pass
     refute Attendee.new(100).has_pass?

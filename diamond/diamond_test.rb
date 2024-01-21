@@ -22,15 +22,21 @@ class DiamondTest < Minitest::Test
 
   def test_letter_e
     answer = Diamond.make_diamond('E')
-    string = "    A    \n"\
-             "   B B   \n"\
-             "  C   C  \n"\
-             " D     D \n"\
-             "E       E\n"\
-             " D     D \n"\
-             "  C   C  \n"\
-             "   B B   \n"\
-             "    A    \n"
+    string = diamond_letter_e
     assert_equal string, answer
+  end
+
+  private
+
+  def diamond_letter_e
+    "    A    \n"\
+    "   B B   \n"\
+    "  C   C  \n"\
+    " D     D \n"\
+    "E       E\n"\
+    " D     D \n"\
+    "  C   C  \n"\
+    "   B B   \n"\
+    "    A    \n"
   end
 end
