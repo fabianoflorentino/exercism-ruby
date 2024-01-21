@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #
 # Write your code for the 'ISBN Verifier' exercise in this file. Make the tests in
 # `isbn_verifier_test.rb` pass.

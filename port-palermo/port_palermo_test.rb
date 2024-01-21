@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 require_relative 'port_palermo'
 
+# Test
 class PortPalermoTest < Minitest::Test
   def test_identifier
     assert_equal :PALE, Port::IDENTIFIER
