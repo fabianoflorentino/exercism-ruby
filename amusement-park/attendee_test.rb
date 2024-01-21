@@ -3,6 +3,7 @@
 require 'minitest/autorun'
 require_relative 'attendee'
 
+# Test
 class AttendeeTest < Minitest::Test
   def test_new_instance
     height = 100

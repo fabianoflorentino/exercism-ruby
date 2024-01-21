@@ -106,18 +106,8 @@ class TournamentTest < Minitest::Test
   end
 
   def test_there_can_be_more_than_two_teams
-    input = <<~INPUT
-      Allegoric Alaskans;Blithering Badgers;win
-      Blithering Badgers;Courageous Californians;win
-      Courageous Californians;Allegoric Alaskans;loss
-    INPUT
-
-    expected = <<~TALLY
-      Team                           | MP |  W |  D |  L |  P
-      Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6
-      Blithering Badgers             |  2 |  1 |  0 |  1 |  3
-      Courageous Californians        |  2 |  0 |  0 |  2 |  0
-    TALLY
+    input = test_there_can_be_more_than_two_teams_input
+    expected = test_there_can_be_more_than_two_teams_tally
 
     assert_equal expected, Tournament.tally(input)
   end
@@ -199,5 +189,24 @@ class TournamentTest < Minitest::Test
     TALLY
 
     assert_equal expected, Tournament.tally(input)
+  end
+
+  private
+
+  def test_there_can_be_more_than_two_teams_input
+    <<~INPUT
+      Allegoric Alaskans;Blithering Badgers;win
+      Blithering Badgers;Courageous Californians;win
+      Courageous Californians;Allegoric Alaskans;loss
+    INPUT
+  end
+
+  def test_there_can_be_more_than_two_teams_tally
+    <<~TALLY
+      Team                           | MP |  W |  D |  L |  P
+      Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6
+      Blithering Badgers             |  2 |  1 |  0 |  1 |  3
+      Courageous Californians        |  2 |  0 |  0 |  2 |  0
+    TALLY
   end
 end
