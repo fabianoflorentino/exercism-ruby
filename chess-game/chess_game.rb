@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Chess
   # TODO: define the 'RANKS' constant
   # TODO: define the 'FILES' constant
