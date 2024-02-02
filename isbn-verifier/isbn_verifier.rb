@@ -7,37 +7,28 @@
 # To get started with TDD, see the `README.md` file in your
 # `ruby/isbn-verifier` directory.
 class IsbnVerifier
-  def self.valid?(isbn)
-    checksum(isbn)
-  end
+  ISBN_LENGTH = 10
 
-  def self.checksum(isbn)
-    mod11(format_isbn(isbn))
+  def self.valid?(isbn)
+    isbn = format_isbn(isbn)
+    valid_size?(isbn) && !invalid_characters?(isbn) && mod11(isbn)
   end
 
   def self.format_isbn(isbn)
-    isbn = isbn.gsub(/[-\s]/, '').chars
-
-    return 1 if validate?(isbn)
-
-    isbn = isbn.map.with_index { |element, index| index == 9 && element == 'X' ? '10' : element }
-    isbn.map(&:to_i)
+    isbn.gsub(/[-\s]/, '').chars
   end
 
   def self.mod11(digits)
-    calc = 0
-
-    10.times { |char| calc += digits[char] * (10 - char) }
-    (calc % 11).zero?
+    digits = digits.map { |digit| digit == 'X' ? 10 : digit.to_i }
+    checksum = digits.each_with_index.sum { |digit, index| digit * (ISBN_LENGTH - index) }
+    (checksum % 11).zero?
   end
 
-  def self.validate?(isbn)
-    return 1 unless valid_size?(isbn)
-
-    isbn.any? { |element| element.match?(/[A-WYZa-wyz]/) }
+  def self.invalid_characters?(isbn)
+    isbn[0...-1].any? { |element| element =~ /\D/ } || isbn[-1] =~ /[^0-9X]/
   end
 
   def self.valid_size?(isbn)
-    isbn.size == 10
+    isbn.size == ISBN_LENGTH
   end
 end
