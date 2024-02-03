@@ -3,8 +3,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "httpas://github.com/#{repo}.git" }
 
-ruby '3.2.3'
+ruby File.read('.ruby.version').strip.split('-').last.to_s
 
 gem 'brakeman', '~> 6.0.1'
-gem 'rails', '~> 7.1.3'
 gem 'rubocop', '~> 1.60.2'
+gem 'rubocop-minitest', '~> 0.34.5'

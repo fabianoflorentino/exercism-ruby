@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  exercism:
+    image: fabianoflorentino/exercism:ruby
+    container_name: exercism-ruby
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/exercism
+    networks:
+      - exercism
+
+networks:
+  exercism:
+    driver: bridge
+    name: exercism
