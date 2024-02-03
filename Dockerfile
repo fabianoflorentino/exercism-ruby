@@ -8,7 +8,7 @@ WORKDIR /exercism
 RUN set -xe; \
   apk update; \
   apk upgrade; \
-  apk add --update --no-cache build-base
+  apk add --update --no-cache build-base bash
 
 # Copy the Gemfile and Gemfile.lock to the container
 COPY Gemfile .ruby.version .tool.version ./
