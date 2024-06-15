@@ -1,5 +1,5 @@
 # Use the official Ruby image as the base image
-FROM ruby:3.2.3-alpine
+FROM ruby:3.3.1-alpine
 
 # Set the working directory in the container
 WORKDIR /exercism
@@ -20,4 +20,4 @@ RUN bundle install
 COPY . .
 
 # Set the default command to run when the container starts
-CMD while true; do echo "Container is alive"; sleep 30; done
+CMD while true; do echo "Container is alive"; sleep 300; done
